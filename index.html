@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查理深空 - 您的专属影视网站</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
+        
+        body {
+            /* 使用 Inter 作为主要字体，中文使用 Noto Sans SC */
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            scroll-behavior: smooth; /* 启用原生CSS平滑滚动 */
+        }
+
+        /* 模拟精选英雄区背景图 */
+        .hero-background {
+            background-image: url('https://placehold.co/1600x900/1e293b/ffffff?text=FEATURED+MOVIE+SCENE');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* 渐变遮罩，使文字更清晰 */
+        .hero-overlay {
+            background: linear-gradient(to top, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* 自定义滚动条样式，使其更符合深色主题 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+
+    <!-- 导航栏 (Header) -->
+    <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo - 网站名称更改为“查理深空” - 点击回到顶部 -->
+            <a href="#top" class="text-3xl font-extrabold text-indigo-500 tracking-wider">
+                查理<span class="text-white">深空</span>
+            </a>
+            
+            <!-- 导航链接 (Desktop) - 增加 data-target 用于 JS 平滑滚动 -->
+            <nav class="hidden md:flex space-x-8">
+                <!-- 链接到精选区 -->
+                <a href="#featured" class="nav-link text-gray-300 hover:text-indigo-400 transition duration-150" data-target="featured">首页</a>
+                <!-- 链接到热门推荐区 (作为电影的代表) -->
+                <a href="#trending" class="nav-link text-gray-300 hover:text-indigo-400 transition duration-150" data-target="trending">电影</a>
+                <!-- 链接到原创剧集区 (作为电视剧的代表) -->
+                <a href="#series" class="nav-link text-gray-300 hover:text-indigo-400 transition duration-150" data-target="series">电视剧</a>
+                <a href="#" class="text-gray-300 hover:text-indigo-400 transition duration-150">原创</a>
+            </nav>
+            
+            <!-- 搜索和用户 (Icons/Buttons) -->
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-300 hover:text-indigo-400 p-2 rounded-full transition duration-150">
+                    <!-- 搜索图标 (Lucide Icon Placeholder) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 shadow-md">
+                    登录/注册
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- 1. 精选影片区 (Hero Section) - 增加 ID: featured -->
+        <section id="featured" class="hero-background h-[70vh] flex items-end">
+            <div class="hero-overlay"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 z-10 w-full">
+                <span class="text-indigo-400 font-bold uppercase tracking-widest text-sm">今日精选</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mt-2 mb-4 drop-shadow-lg leading-tight">
+                    <span class="text-white">深空</span> 边界
+                </h1>
+                <p class="max-w-xl text-gray-300 text-lg mb-6">
+                    一艘被遗忘的飞船，一个未知的信号。在宇宙最遥远的角落，人类发现了一个足以改变历史的秘密。
+                </p>
+                <div class="flex space-x-4">
+                    <button class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg shadow-xl transform transition duration-300 hover:scale-[1.02]">
+                        <!-- 播放图标 -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>立即观看</span>
+                    </button>
+                    <button class="flex items-center space-x-2 border border-gray-500 hover:border-white text-gray-300 hover:text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                        <!-- 更多信息图标 -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        <span>详情</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 内容列表区 -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <!-- 热门推荐 (Trending) - 增加 ID: trending -->
+            <section id="trending" class="mb-12 pt-16 -mt-16"> <!-- pt/mt 调整，避免被 sticky header 遮挡 -->
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-white">热门推荐</h2>
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition duration-150">查看更多 &rarr;</a>
+                </div>
+
+                <!-- 影片卡片网格 -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                    <!-- 电影卡片模板 (6张) -->
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/374151/ffffff?text=Poster+1" alt="动作片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">代号：幽灵</h3>
+                        <p class="text-sm text-gray-400">2024 · 动作</p>
+                    </div>
+
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/4b5563/ffffff?text=Poster+2" alt="科幻片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">星际移民</h3>
+                        <p class="text-sm text-gray-400">2023 · 科幻</p>
+                    </div>
+
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/6b7280/ffffff?text=Poster+3" alt="喜剧片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">我的超能力邻居</h3>
+                        <p class="text-sm text-gray-400">2024 · 喜剧</p>
+                    </div>
+
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/9ca3af/ffffff?text=Poster+4" alt="纪录片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">地球的呼吸</h3>
+                        <p class="text-sm text-gray-400">2023 · 纪录片</p>
+                    </div>
+                    
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300 hidden lg:block">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/4f46e5/ffffff?text=Poster+5" alt="惊悚片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">迷失的航班</h3>
+                        <p class="text-sm text-gray-400">2024 · 惊悚</p>
+                    </div>
+                    
+                    <div class="movie-card group cursor-pointer transform hover:scale-[1.02] transition duration-300 hidden lg:block">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl">
+                            <img src="https://placehold.co/300x450/3b82f6/ffffff?text=Poster+6" alt="爱情片海报" class="w-full h-auto object-cover group-hover:opacity-75 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition duration-300">
+                                <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">盛夏光年</h3>
+                        <p class="text-sm text-gray-400">2022 · 爱情</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 独家原创剧集 (Original Series) - 增加 ID: series -->
+            <section id="series" class="mb-12 pt-16 -mt-16"> <!-- pt/mt 调整，避免被 sticky header 遮挡 -->
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-white">独家原创剧集</h2>
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300 transition duration-150">查看更多 &rarr;</a>
+                </div>
+
+                <!-- 剧集卡片网格 -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+                    <!-- 剧集卡片模板 (5张) -->
+                    <div class="series-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/9]">
+                            <img src="https://placehold.co/600x337/10b981/ffffff?text=Series+1" alt="原创剧集封面" class="w-full h-full object-cover group-hover:opacity-75 transition duration-300">
+                            <span class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded-full">独家</span>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">时间碎片（共8集）</h3>
+                        <p class="text-sm text-gray-400">悬疑 · 谍战</p>
+                    </div>
+                    
+                    <div class="series-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/9]">
+                            <img src="https://placehold.co/600x337/f59e0b/ffffff?text=Series+2" alt="原创剧集封面" class="w-full h-full object-cover group-hover:opacity-75 transition duration-300">
+                            <span class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded-full">独家</span>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">王城往事（共2季）</h3>
+                        <p class="text-sm text-gray-400">历史 · 权谋</p>
+                    </div>
+                    
+                    <div class="series-card group cursor-pointer transform hover:scale-[1.02] transition duration-300">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/9]">
+                            <img src="https://placehold.co/600x337/ef4444/ffffff?text=Series+3" alt="原创剧集封面" class="w-full h-full object-cover group-hover:opacity-75 transition duration-300">
+                            <span class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded-full">独家</span>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">赛博格的夏天</h3>
+                        <p class="text-sm text-gray-400">科幻 · 爱情</p>
+                    </div>
+                    
+                    <div class="series-card group cursor-pointer transform hover:scale-[1.02] transition duration-300 hidden md:block">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/9]">
+                            <img src="https://placehold.co/600x337/8b5cf6/ffffff?text=Series+4" alt="原创剧集封面" class="w-full h-full object-cover group-hover:opacity-75 transition duration-300">
+                            <span class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded-full">独家</span>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">美食猎人</h3>
+                        <p class="text-sm text-gray-400">美食 · 冒险</p>
+                    </div>
+                    
+                    <div class="series-card group cursor-pointer transform hover:scale-[1.02] transition duration-300 hidden lg:block">
+                        <div class="relative overflow-hidden rounded-xl shadow-xl aspect-[16/9]">
+                            <img src="https://placehold.co/600x337/f97316/ffffff?text=Series+5" alt="原创剧集封面" class="w-full h-full object-cover group-hover:opacity-75 transition duration-300">
+                            <span class="absolute top-2 left-2 bg-red-600 text-xs font-bold px-2 py-1 rounded-full">独家</span>
+                        </div>
+                        <h3 class="text-base font-semibold mt-3 truncate">后代</h3>
+                        <p class="text-sm text-gray-400">家庭 · 剧情</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 底部 (Footer) -->
+    <footer class="bg-gray-800 border-t border-gray-700 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- 链接列 1 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">关于我们</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-indigo-400 transition">公司简介</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">加入我们</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">新闻中心</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 链接列 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">帮助中心</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-indigo-400 transition">账户与设置</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">常见问题</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">支持</a></li>
+                    </ul>
+                </div>
+
+                <!-- 链接列 3 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">法律条款</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-indigo-400 transition">服务条款</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">隐私政策</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Cookie偏好</a></li>
+                    </ul>
+                </div>
+
+                <!-- 社交媒体/App下载 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                            <!-- 微博图标 (Facebook Placeholder) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                            <!-- 微信图标 (Twitter Placeholder) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </a>
+                        <!-- 更多图标... -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 版权信息更改为“查理深空” -->
+            <div class="mt-10 pt-6 border-t border-gray-700 text-center text-gray-500 text-sm">
+                &copy; 2024 查理深空 版权所有. 影视为虚构内容，仅供演示。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取所有带有 'nav-link' 类的导航链接
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // 阻止默认的锚点跳转行为
+                    event.preventDefault();
+
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) {
+                            // 使用 JavaScript 实现平滑滚动
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80, // 减去 80px，为固定导航栏留出空间
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // 确保 Logo 点击回到顶部
+            const logo = document.querySelector('a[href="#top"]');
+            if (logo) {
+                logo.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
